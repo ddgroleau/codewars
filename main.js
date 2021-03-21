@@ -1,21 +1,15 @@
-/*
-n >= 0
-x >= 0
-y >= 0
-tf, x >=2
-tf, if n > 0, the highest value of x is Math.log2(n+4)
-x-2y = sqrtn
-*/
-
-function solequa(n) {
-let s = []
-for (let x = Math.round((n/2)+2); x>=0; x--) {
-  let x2 = Math.pow(x,2)
-let x2MinusN = x2 - n;
-  let y = Math.sqrt((x2MinusN)/4)
-  if (Number.isInteger(y)) {s.push([x,y])}
+function countingValleys(steps, path) {
+  // Write your code here
+let valleys = 0;
+let arr = path.split("").map(i => {
+  return i === "D" ? -1 : 1
+})
+let seaLevel = 0;
+for (let i in arr) {
+  seaLevel+=arr[i]
+  if (arr[i]===1 && seaLevel === 0) { valleys+=1 }
 }
-return s
+return valleys;
 }
 
-console.log(solequa(90005))
+console.log(countingValleys(8,'UDDDUDUU'))
