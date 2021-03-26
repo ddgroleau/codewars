@@ -1,13 +1,12 @@
-function pipeFix(numbers){
-    let index = 0;
-    const arr = []
+function reverseNumber(n) {
+    let reverse = 0;
     const recurse = (i) => {
-    if (i != numbers[numbers.length-1]) {
-      arr.push(numbers[i])
-      recurse(i+1)
+      if (i >= 0) {
+        reverse += n.toString()[i].toString();
+        recurse(i-1);
+      } else { return }
+    };
+    recurse(n.toString().length-1);
+   return  n < 0 ? parseFloat(reverse)*-1 : parseFloat(reverse)
     }
-    return arr;
-    }
-    recurse(index);
-    return arr;
-    }
+    console.log(reverseNumber(-123))
